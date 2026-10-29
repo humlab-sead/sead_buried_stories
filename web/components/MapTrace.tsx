@@ -7,13 +7,13 @@ import type { LngLatBoundsLike } from "maplibre-gl";
 import { buffer, convex, featureCollection, lineString, point, points } from "@turf/turf";
 import { maplibreLib, osmRasterStyle } from "@/lib/basemap";
 import type { SpeciesPathStop } from "@/lib/types";
+import { seadSiteUrl } from "@/lib/sead";
 
 interface MapTraceProps {
   stops: SpeciesPathStop[];
   activeIndex: number;
 }
 
-const SEAD_SITE_URL = "https://browser.sead.se/site/";
 // Feathered edge: the hull is drawn several times, each buffered a little further out and
 // very faint, so the overlaps build a soft gradient from a denser core to a blurry rim.
 const FEATHER_STEPS = [1, 1.3, 1.65, 2, 2.4, 2.85, 3.3, 3.8];
@@ -164,7 +164,7 @@ export function MapTrace({ stops, activeIndex }: MapTraceProps) {
             style={{ zIndex: isHovered ? 3 : isActive ? 2 : 1 }}
           >
             <a
-              href={`${SEAD_SITE_URL}${s.site_id}`}
+              href={seadSiteUrl(s.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${s.site_name} — open in the SEAD browser`}

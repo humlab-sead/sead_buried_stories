@@ -6,8 +6,7 @@ import Map, { Marker, MapRef } from "react-map-gl/maplibre";
 import type { LngLatBoundsLike } from "maplibre-gl";
 import { maplibreLib, osmRasterStyle } from "@/lib/basemap";
 import type { CeramicsSite } from "@/lib/types";
-
-const SEAD_SITE_URL = "https://browser.sead.se/site/";
+import { seadSiteUrl } from "@/lib/sead";
 
 export function CeramicsMap({ sites }: { sites: CeramicsSite[] }) {
   const mapRef = useRef<MapRef | null>(null);
@@ -52,7 +51,7 @@ export function CeramicsMap({ sites }: { sites: CeramicsSite[] }) {
             style={{ zIndex: isHovered ? 2 : 1 }}
           >
             <a
-              href={`${SEAD_SITE_URL}${s.site_id}`}
+              href={seadSiteUrl(s.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${s.site_name} — open in the SEAD browser`}

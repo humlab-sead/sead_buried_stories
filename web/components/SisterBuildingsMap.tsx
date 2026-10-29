@@ -6,13 +6,12 @@ import Map, { Marker, Source, Layer, MapRef } from "react-map-gl/maplibre";
 import type { LngLatBoundsLike } from "maplibre-gl";
 import { maplibreLib, osmRasterStyle } from "@/lib/basemap";
 import type { ProvenanceShape, SisterCluster } from "@/lib/types";
+import { seadSiteUrl } from "@/lib/sead";
 
 function shapeBounds(geometry: ProvenanceShape["geometry"]): [number, number][] {
   const rings = geometry.type === "Polygon" ? geometry.coordinates : geometry.coordinates.flat();
   return rings.flat() as [number, number][];
 }
-
-const SEAD_SITE_URL = "https://browser.sead.se/site/";
 
 export function SisterBuildingsMap({
   cluster,
@@ -112,7 +111,7 @@ export function SisterBuildingsMap({
             style={{ zIndex: isHovered ? 2 : 1 }}
           >
             <a
-              href={`${SEAD_SITE_URL}${s.site_id}`}
+              href={seadSiteUrl(s.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${s.site_name} — open in the SEAD browser`}

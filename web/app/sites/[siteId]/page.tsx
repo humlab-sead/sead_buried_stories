@@ -5,6 +5,7 @@ import { SiteDig } from "@/components/SiteDig";
 import { LocatorMap } from "@/components/LocatorMap";
 import { AttributionBadge } from "@/components/AttributionBadge";
 import { DatingNote } from "@/components/DatingNote";
+import { seadSiteUrl } from "@/lib/sead";
 
 export function generateStaticParams() {
   return getSitesIndex().map((s) => ({ siteId: String(s.site_id) }));
@@ -51,7 +52,7 @@ export default async function SiteDetailPage({
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
             <h1 className="text-3xl font-semibold tracking-tight">{site.site_name}</h1>
             <a
-              href={`https://browser.sead.se/site/${site.site_id}`}
+              href={seadSiteUrl(site.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               className="whitespace-nowrap rounded-full border border-accent/60 px-3 py-1 text-sm text-accent-text transition-colors hover:bg-accent/10"

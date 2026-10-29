@@ -5,6 +5,7 @@ import { TimberRings } from "@/components/TimberRings";
 import { LocatorMap } from "@/components/LocatorMap";
 import { AttributionBadge } from "@/components/AttributionBadge";
 import { DatingNote } from "@/components/DatingNote";
+import { seadSiteUrl } from "@/lib/sead";
 
 export function generateStaticParams() {
   return getTimberRingsIndex().map((b) => ({ siteId: String(b.site_id) }));
@@ -46,7 +47,7 @@ export default async function TimberRingsDetailPage({
           <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
             <h1 className="text-3xl font-semibold tracking-tight">{building.site_name}</h1>
             <a
-              href={`https://browser.sead.se/site/${building.site_id}`}
+              href={seadSiteUrl(building.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               className="whitespace-nowrap rounded-full border border-accent/60 px-3 py-1 text-sm text-accent-text transition-colors hover:bg-accent/10"

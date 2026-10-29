@@ -1,6 +1,7 @@
 import { getAllCeramicsPeriods } from "@/lib/data";
 import { CeramicsExplorer } from "@/components/CeramicsExplorer";
 import { DatingNote } from "@/components/DatingNote";
+import { SEAD_BROWSER_URL } from "@/lib/sead";
 
 export const metadata = { title: "Ceramics Through Time | Buried Stories" };
 
@@ -15,7 +16,7 @@ export default function CeramicsPage() {
         from cracking in the kiln. Step through the eras and watch the recipe change.
       </p>
       <a
-        href="https://browser.sead.se/ceramic"
+        href={`${SEAD_BROWSER_URL}/ceramic`}
         target="_blank"
         rel="noopener noreferrer"
         className="mt-4 inline-block rounded-full border border-accent/60 px-4 py-1.5 text-sm text-accent-text transition-colors hover:bg-accent/10"
