@@ -6,6 +6,7 @@ import { AttributionBadge } from "@/components/AttributionBadge";
 import { SisterBuildingsMap } from "@/components/SisterBuildingsMap";
 import { speciesLabel } from "@/lib/speciesColors";
 import type { ProvenanceShape, SisterCluster } from "@/lib/types";
+import { seadSiteUrl } from "@/lib/sead";
 
 export function SisterBuildingsExplorer({
   clusters,
@@ -60,7 +61,7 @@ export function SisterBuildingsExplorer({
             {active.sites.map((s) => (
               <a
                 key={s.site_id}
-                href={`https://staging.sead.se/site/${s.site_id}`}
+                href={seadSiteUrl(s.site_id)}
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`${s.site_name} — open in the SEAD browser`}

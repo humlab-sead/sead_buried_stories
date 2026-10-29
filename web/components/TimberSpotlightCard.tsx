@@ -5,6 +5,7 @@ import { useState } from "react";
 import { AttributionBadge } from "@/components/AttributionBadge";
 import { LocatorMap } from "@/components/LocatorMap";
 import type { TimberPreciseSample } from "@/lib/types";
+import { seadSiteUrl } from "@/lib/sead";
 
 function pickNext(current: number, total: number) {
   if (total <= 1) return 0;
@@ -78,7 +79,7 @@ export function TimberSpotlightCard({ samples }: { samples: TimberPreciseSample[
               Show me another
             </button>
             <a
-              href={`https://staging.sead.se/site/${s.site_id}`}
+              href={seadSiteUrl(s.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-full border border-accent/60 px-5 py-2 text-sm text-accent-text transition-colors hover:bg-accent/10"

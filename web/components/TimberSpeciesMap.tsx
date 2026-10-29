@@ -7,13 +7,12 @@ import type { LngLatBoundsLike } from "maplibre-gl";
 import { maplibreLib, osmRasterStyle } from "@/lib/basemap";
 import { speciesColor } from "@/lib/speciesColors";
 import type { TimberSpeciesPoint } from "@/lib/types";
+import { seadSiteUrl } from "@/lib/sead";
 
 const SWEDEN_BOUNDS: LngLatBoundsLike = [
   [10.5, 54.9],
   [24.5, 69.5],
 ];
-
-const SEAD_SITE_URL = "https://staging.sead.se/site/";
 
 export function TimberSpeciesMap({ points }: { points: TimberSpeciesPoint[] }) {
   const mapRef = useRef<MapRef | null>(null);
@@ -50,7 +49,7 @@ export function TimberSpeciesMap({ points }: { points: TimberSpeciesPoint[] }) {
             style={{ zIndex: isHovered ? 2 : 1 }}
           >
             <a
-              href={`${SEAD_SITE_URL}${p.site_id}`}
+              href={seadSiteUrl(p.site_id)}
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${p.site_name} — open in the SEAD browser`}
